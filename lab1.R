@@ -51,6 +51,3 @@ v1 <- sample(1:30, 10, replace=T)
 v2 <- v1
 names(v2) <- letters[26:17]
 v1;v2
-
-
-
