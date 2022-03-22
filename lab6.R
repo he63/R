@@ -49,6 +49,8 @@ exam5 <- function(x,y="#"){
   }
 
 exam5(3)
+
+
 # 문제6
 exam6 <- function(data){
   for (b in data){

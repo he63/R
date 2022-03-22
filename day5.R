@@ -153,7 +153,7 @@ evenodd2 <- function(p) {
     r <- "even" 
   else 
     r <- "odd"
-  return("odd")
+  return("r")
 }
 sapply(v, evenodd2)
 lapply(v, evenodd2)
