@@ -18,8 +18,6 @@ countEvenOdd <- function(num.vec){
   print(evenodd)
 } 
 
-countEvenOdd(c(1,3,3,4,5,6))
-
 # 문제2
 vmSum <- function(arg){
   sum = 0
@@ -53,7 +51,7 @@ mySum <- function(vec){
   evenodd <- list()
   even <- c()
   odd <- c()
-  if (is.vector(vec)){
+  if (any(is.vector(vec))){
     for (num in vec){
       if (is.na(num)){
         warning("NA를 최저값으로 변경하여 처리함!!")
