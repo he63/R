@@ -11,7 +11,7 @@ apply(df, 1, sum, na.rm=TRUE)
 apply(df, 2, sum, na.rm=TRUE)
 lapply(df, sum, na.rm=TRUE)
 sapply(df, sum, na.rm=TRUE)
-tapply(1:6, gender, sum) # rm(sum)
+tapply(1:6, gender, sum) # rm(sum)    # 기본 패키지 함수 base::sum
 tapply(df$w, gender, mean, na.rm=TRUE)
 mapply(paste, 1:5, LETTERS[1:5], month.abb[1:5])
 
@@ -33,6 +33,9 @@ sapply(flower, function(d) paste("-",d,"-", sep=""))
 sapply(flower, function(d, n=5) if(nchar(d) > n) return(d))
 sapply(flower, function(d, n=5) if(nchar(d) > n) return(d), 3)
 sapply(flower, function(d, n=5) if(nchar(d) > n) return(d), n=4)
+
+# NULL은 데이터 셋, NA는 데이터 값이므로
+# 벡터의 경우 NULL이 나올 수 없음
 
 count <- 1
 myf <- function(x, wt=T){
