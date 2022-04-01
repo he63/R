@@ -4,16 +4,20 @@ print(100)
 print(pi)
 data <- "가나다"
 print(data)
+
 print(data, quote=FALSE)  # ""처럼 인용구 삭제
 v1 <- c("사과", "바나나", "포도")
 print(v1)
 print(v1, print.gap=10) # 자간 설정
 cat(100) # print 와 같지만 개행처리 안함
+
+
 cat(100,200)
 cat(100,200,"\n")
 cat("aaa", "bbb", "ccc", "ddd", "\n")
 cat(v1, "\n")
 cat(v1, sep="-", "\n")
+
 
 print(paste("R", "은 통계분석", "전용 언어입니다."))   #cat()과 같은 기능
 cat("R", "은 통계분석", "전용 언어입니다.", "\n")
@@ -47,9 +51,6 @@ df2 <- read.table("data/product_click.log", stringsAsFactors = T) # header-T
 str(df2)
 head(df2)
 summary(df2$V2)
-
-
-
 
 
 
@@ -147,6 +148,7 @@ for(i in 1:9){
   if(bb) #bb가 TRUE이면
     break
 }
+
 
 #while문
 i<-1
@@ -251,3 +253,33 @@ repeat {
     break;
 }
 
+
+# 객체를 파일에 저장하고 읽기
+
+ls()
+length(ls())
+save(list=ls(),file="all.RData") # "all.rda" 
+rm(list=ls())
+ls()
+load("all.RData")
+ls()
+
+# 파일에서 데이터 읽기
+nums <- scan("data/sample_num.txt")
+nums
+word_ansi <- scan("data/sample_ansi.txt",what="")
+word_ansi
+words_utf8 <- scan("data/sample_utf8.txt", what="",encoding="UTF-8")
+words_utf8
+words_err <- scan("data/sample_utf8.txt", what="")
+words_err
+
+lines_ansi <- readLines("data/sample_ansi.txt")
+lines_ansi 
+lines_utf8 <- readLines("data/sample_utf8.txt",encoding="UTF-8")
+lines_utf8
+
+df2 <- read.table("data/product_click.log", stringsAsFactors = T)
+str(df2)
+head(df2)
+summary(df2$V2)
