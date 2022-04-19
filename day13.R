@@ -1,4 +1,19 @@
 library(dplyr)
+# 데이터 전처리 - dplyr 패키지를 학습하자....
+
+install.packages("dplyr") 
+library(dplyr) # detach("package:dplyr")
+install.packages("ggplot2")
+str(ggplot2::mpg)
+head(ggplot2::mpg)
+mpg <- as.data.frame(ggplot2::mpg)
+head(mpg)
+exam <- read.csv("data/csv_exam.csv")
+str(exam)
+dim(exam)
+head(exam);tail(exam)
+View(exam) 
+
 # [ filter() ]
 # exam에서 class가 1인 경우만 추출하여 출력
 filter(exam, class == 1) # dplyr을 로드하지 않고 수행하면 stats 패키지의 filter()가 수행됨
@@ -407,43 +422,3 @@ str(a)
 plot(a$point, a$num)
 
 
-# 이젠 이상치를 처리해 보자~~~~
-
-# 이상치 포함된 데이터 생성 - sex 3, score 6
-outlier <- data.frame(sex = c(1, 2, 1, 3, 2, 1),  score = c(5, 4, 3, 4, 2, 6)) 
-# 이상치 확인하기
-table(outlier$sex)
-table(outlier$score)
-
-
-# 결측 처리하기 - sex
-# sex가 3이면 NA 할당
-outlier$sex <- ifelse(outlier$sex == 3, NA, outlier$sex)
-
-#결측 처리하기 - score
-# sex가 1~5 아니면 NA 할당
-outlier$score <- ifelse(outlier$score > 5, NA, outlier$score)
-
-# 결측치 제외하고 분석
-outlier %>%
-  filter(!is.na(sex) & !is.na(score)) %>%
-  group_by(sex) %>%
-  summarise(mean_score = mean(score))
-
-mpg <- as.data.frame(ggplot2::mpg)
-View(mpg)
-boxplot(mpg$hwy, notch=T) # , notch=T
-boxplot(mpg$hwy, range=0)
-summary(mpg$hwy)
-#상자그림 통계치 출력
-boxplot(mpg$hwy)$stats  # 상자그림 통계치 출력
-
-# 결측 처리하기
-# 12~37 벗어나면 NA 할당
-mpg$hwy <- ifelse(mpg$hwy < 12 | mpg$hwy > 37, NA, mpg$hwy)
-table(is.na(mpg$hwy))
-
-# 결측치 제외하고 분석하기
-mpg %>%
-  group_by(drv) %>%
-  summarise(mean_hwy = mean(hwy, na.rm = T))

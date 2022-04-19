@@ -39,10 +39,17 @@ emp %>% arrange(desc(sal)) %>% head(1)
 empnew <- emp %>% rename(salary='sal', commrate='comm')
 
 # 문제13
-emp %>% group_by(deptno) %>% summarise(n = n()) %>% arrange(desc(n)) %>% select(deptno) %>% head(1)
+emp %>% 
+  group_by(deptno) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  select(deptno) %>% 
+  head(1)
 
 # 문제14
-emp %>% mutate(enamelength=nchar(ename))
+emp %>% mutate(enamelength=nchar(ename)) %>% 
+  arrange(enamelength) %>% 
+  select(ename, enamelength)
 
 # 문제15
 emp %>% filter(comm != "NA") %>% summarise(n=n())
